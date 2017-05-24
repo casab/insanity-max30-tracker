@@ -38,7 +38,7 @@ const initialState = {
 export const reducer = (state=initialState, action) =>{
   const {type} = action
   switch(type){
-    case "RESET_TIMER":
+    case types.RESET_TIMER:
       return {
         ...state,
         baseTime: 0,
@@ -46,14 +46,14 @@ export const reducer = (state=initialState, action) =>{
         stoppedAt: state.stoppedAt ? action.now : undefined,
         maxOutSet: false,
       }
-    case "START_TIMER":
+    case types.START_TIMER:
       return {
         ...state,
         baseTime: action.baseTime,
         startedAt: action.now,
         stoppedAt: undefined
       }
-    case "STOP_TIMER":
+    case types.STOP_TIMER:
       return {
         ...state,
         stoppedAt: state.stoppedAt ? state.stoppedAt : action.now,
@@ -61,18 +61,18 @@ export const reducer = (state=initialState, action) =>{
         maxOutSet: true,
         finishedWorkout: true,
       }
-    case "SET_MAX_OUT":
+    case types.SET_MAX_OUT:
       return {
         ...state,
         maxOutTime: action.maxOutTime,
         maxOutSet: true
       }
-    case "SELECT_DATE":
+    case types.SELECT_DATE:
       return {
         ...state,
         selectedDate: action.selectedDate,
       }
-    case "SET_WORKOUT_PROGRAM":
+    case types.SET_WORKOUT_PROGRAM:
       return {
         ...state,
         workoutProgram: action.workoutProgram
@@ -85,32 +85,32 @@ export const reducer = (state=initialState, action) =>{
 export const actionCreators = {
   startTimer: (baseTime = 0) => {
     return {
-      type: "START_TIMER",
+      type: types.START_TIMER,
       baseTime: baseTime,
       now: new Date().getTime()
     }
   },
   stopTimer: () => {
     return {
-      type: "STOP_TIMER",
+      type: types.STOP_TIMER,
       now: new Date().getTime()
     }
   },
   resetTimer: () => {
     return {
-      type: "RESET_TIMER",
+      type: types.RESET_TIMER,
       now: new Date().getTime()
     }
   },
   setMaxOut: (elapsed) => {
     return {
-      type: "SET_MAX_OUT",
+      type: types.SET_MAX_OUT,
       maxOutTime: elapsed
     }
   },
   selectDate: (date) => {
     return {
-      type: "SELECT_DATE",
+      type: types.SELECT_DATE,
       selectedDate: date
     }
   },
@@ -127,7 +127,7 @@ export const actionCreators = {
     }
 
     return {
-      type: "SET_WORKOUT_PROGRAM",
+      type: types.SET_WORKOUT_PROGRAM,
       workoutProgram: program
     }
   }

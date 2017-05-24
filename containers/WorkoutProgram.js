@@ -1,4 +1,10 @@
 import React from 'react'
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet
+} from 'react-native'
 import Calendar from 'react-native-calendar'
 import Reactotron from 'reactotron-react-native'
 import { connect } from 'react-redux'
@@ -6,13 +12,6 @@ import { ActionCreators } from '../redux'
 import moment from 'moment'
 
 const { selectDate, setWorkoutProgram } = ActionCreators
-
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet
-} from 'react-native'
 
 const mapStateToProps = (state) => {
   const { workoutProgram, selectedDate } = state.main
