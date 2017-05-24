@@ -3,25 +3,22 @@ import { View, Button, StyleSheet, Text } from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
 
-// import { incrementSeconds } from '../redux/mainRedux'
-
 import Timer from './Timer'
+import WorkoutProgram from './WorkoutProgram'
 
-Workout = (props) =>
-  <Timer
-    name="Engin"
-  />
+Workout = () =>
+  <Timer/>
 
-RecentWorkouts = (props) =>
-  <Text>You did good my friend!</Text>
+Program = () =>
+  <WorkoutProgram/>
 
 AllWorkouts = (props) =>
   <Text>You are gonna make it, believe yourself</Text>
 
 
 const AppRouter = TabNavigator({
+  Program: { screen: Program },
   Workout: { screen: Workout },
-  Recent: { screen: RecentWorkouts},
   All: { screen: AllWorkouts},
 }, {
   tabBarOptions: {
